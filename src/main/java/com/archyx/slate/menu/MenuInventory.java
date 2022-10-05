@@ -261,7 +261,6 @@ public class MenuInventory implements InventoryProvider {
             }
             if (provider != null) {
                 provider.onInitialize(player, activeMenu, context);
-                itemStack = modifyBaseItem(provider, itemStack, player, activeMenu, context); // Apply provider base item modifications
             }
             if (itemStack == null) {
                 continue;
@@ -315,7 +314,10 @@ public class MenuInventory implements InventoryProvider {
                     meta.setLore(lore);
                 }
                 itemStack.setItemMeta(meta);
+                itemStack = modifyBaseItem(provider, itemStack, player, activeMenu, context); // Apply provider base item modifications
             }
+            if (itemStack == null) return;
+            
             // Add item to inventory
             SlotPos pos = item.getPosition(context);
             if (pos == null && provider != null) {
