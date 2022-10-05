@@ -32,4 +32,13 @@ public interface SingleItemProvider {
         return baseItem;
     }
 
+    /**
+     * Method for modifying the base item through code, such as player specific item meta
+     *
+     * @param baseItem The base item before modification
+     * @return The base item after modification
+     */
+    default ItemStack onItemModifyAfter(ItemStack baseItem, Player player, ActiveMenu activeMenu) {
+        return baseItem;
+    }
 }
